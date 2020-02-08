@@ -6,6 +6,9 @@
   "repository": "https://github.com/drpika1134/TinyPozt",
   "author": "DrPika",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon app/backend/server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   }
