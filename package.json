@@ -1,0 +1,12 @@
+{
+  "name": "tiny-pozt",
+  "version": "1.0.0",
+  "description": "A small and simple application where anyone can share and connect",
+  "main": "index.js",
+  "repository": "https://github.com/drpika1134/TinyPozt",
+  "author": "DrPika",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
