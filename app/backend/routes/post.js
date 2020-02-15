@@ -1,7 +1,9 @@
 const router = require('express').Router()
+const { checkAuth } = require('../middleware/checkAuth')
 
+router.use(checkAuth)
 router.get('/', (req, res) => {
-  res.send('test')
+  res.json({ success: true })
 })
 /*
   @route  GET /post/:id
