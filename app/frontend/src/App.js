@@ -3,6 +3,8 @@ import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import LoginForm from './components/Login/LoginForm'
+import RegisterForm from './components/Register/RegisterForm'
+
 import PrivateRoute from './components/PrivateRoute'
 
 import checkTokenExist from './utils/checkTokenExist'
@@ -30,7 +32,14 @@ function App() {
       <Link to="/test">Test</Link>
       <Switch>
         <Route exact path="/">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </Route>
+        <Route path="/login">
           <LoginForm />
+        </Route>
+        <Route path="/register">
+          <RegisterForm />
         </Route>
         <PrivateRoute path="/test">
           <Test />
