@@ -1,8 +1,10 @@
+const Joi = require('@hapi/joi')
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 const router = require('express').Router()
 
+const User = require('../models/User')
 const { createTokens } = require('../utils/tokens')
 
 /*
@@ -11,7 +13,6 @@ const { createTokens } = require('../utils/tokens')
   @access Public
 */
 router.post('/login', (req, res) => {
-  // If login successfully, send them back an access and refresh token
   const { username, password } = req.body
 
   bcrypt.hash(password, saltRounds, function(err, hash) {
@@ -31,6 +32,31 @@ router.post('/login', (req, res) => {
       .cookie('token', accessToken)
       .cookie('rToken', refreshToken)
       .json({ success: true })
+  })
+})
+
+/*
+  @route  POST /register
+  @desc   Register a user
+  @access Public
+*/
+router.post('/register', (req, res) => {
+  const { username, password } = req.body
+
+  bcrypt.hash(password, saltRounds, function(err, hash) {
+    if (err) return res.status(500)
+
+    const newUser = new User({
+      username,
+      password: hash
+    })
+
+    newUser
+      .save()
+      .then(() => {
+        res.json({ success: true })
+      })
+      .catch(err => console.log(err))
   })
 })
 
