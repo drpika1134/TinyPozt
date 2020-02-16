@@ -7,9 +7,12 @@
   "author": "DrPika",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app/backend/server.js"
+    "server": "nodemon app/backend/server.js",
+    "client": "npm start --prefix app/frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "bcrypt": "^3.0.8",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
